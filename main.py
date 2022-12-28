@@ -13,10 +13,10 @@ anos = [21,18,20,21,30,25,11,21,18,29,12,22,25,10,29,23,15,16,18,28]
 media = st.mean(anos)
 var = round(st.variance(anos),2)
 
-print('Media:', media, '\n Variancia:', var)
+print('Média:', media, '\nVariância:', var)
 
 i1 , i2, i3, i4, i5, i6, i7, i8, i9, i10 = range(10,12,1), range(12,14,1), range(14,16,1), range(16,18,1), range(18,20,1), \
-                                      range(20,22,1), range(22,24,1), range(24,26,1), range(26,28,1), range(28, max(anos), 1)
+                                      range(20,22,1), range(22,24,1), range(24,26,1), range(26,28,1), range(28, max(anos)+1, 1)
 l1,l2,l3,l4,l5,l6,l7,l8,l9,l10 = ([] for i in range(10))
 for i in range(0,len(anos)):
     if anos[i] in i1:
@@ -53,7 +53,8 @@ A['%'] = A['f']/20*100
 A.set_axis(['Valores','f','%'], axis='columns', inplace=True)
 A.set_axis(['10 |-- 12','12 |-- 14','14 |-- 16','16 |-- 18','18 |-- 20','20 |-- 22','22 |-- 24',
             '24 |-- 26','26 |-- 28','28 ou mais'], axis='rows', inplace=True)
-print("\n",A)
+print(A)
+print("Total\t\t\t\t\t\t", sum(A['f']),sum(A['%']))
 
 n=2
 df = pd.DataFrame()
@@ -129,7 +130,7 @@ d2['Amostras2'] = list(combinations(anos, n))
 l1=l2=l3=l4=l5=l6=l7=l8=l9=l10 = 0
 count = 0
 for i in range(0,len(d2['Amostras2'])):
-    for j in range(0,2):
+    for j in range(0,n):
         if d2['Amostras2'][i][j] in i1:
             l1 = l1 + 1
         elif d2['Amostras2'][i][j] in i2:
@@ -160,7 +161,7 @@ B['Valores'] = A['Valores']
 B['Freq. Abs. (n=2)'] = l1,l2,l3,l4,l5,l6,l7,l8,l9,l10
 B['Freq. % (n=2)'] = round(B['Freq. Abs. (n=2)'] / sum(B['Freq. Abs. (n=2)'])*100,2)
 print(B)
-
+print("Total\t\t\t\t\t\t\t\t\t  ", sum(B['Freq. Abs. (n=2)']),"\t\t    ",sum(B['Freq. % (n=2)']))
 
 d3 = pd.DataFrame()
 n = 3
@@ -168,7 +169,7 @@ d3['Amostras3'] = list(combinations(anos, n))
 l1=l2=l3=l4=l5=l6=l7=l8=l9=l10 = 0
 count = 0
 for i in range(0,len(d3['Amostras3'])):
-    for j in range(0,2):
+    for j in range(0,n):
         if d3['Amostras3'][i][j] in i1:
             l1 = l1 + 1
         elif d3['Amostras3'][i][j] in i2:
@@ -200,6 +201,7 @@ C['Valores'] = A['Valores']
 C['Freq. Abs. (n=3)'] = l1,l2,l3,l4,l5,l6,l7,l8,l9,l10
 C['Freq. % (n=3)'] = round(C['Freq. Abs. (n=3)'] / sum(C['Freq. Abs. (n=3)'])*100,2)
 print(C)
+print("Total\t\t\t\t\t\t\t\t\t ", sum(C['Freq. Abs. (n=3)']),"\t       ",sum(C['Freq. % (n=3)']))
 
 
 d4 = pd.DataFrame()
@@ -208,7 +210,7 @@ d4['Amostras4'] = list(combinations(anos, n))
 l1=l2=l3=l4=l5=l6=l7=l8=l9=l10 = 0
 count = 0
 for i in range(0,len(d4['Amostras4'])):
-    for j in range(0,2):
+    for j in range(0,n):
         if d4['Amostras4'][i][j] in i1:
             l1 = l1 + 1
         elif d4['Amostras4'][i][j] in i2:
@@ -240,3 +242,4 @@ D['Valores'] = A['Valores']
 D['Freq. Abs. (n=4)'] = l1,l2,l3,l4,l5,l6,l7,l8,l9,l10
 D['Freq. % (n=4)'] = round(D['Freq. Abs. (n=4)'] / sum(D['Freq. Abs. (n=4)'])*100,2)
 print(D)
+print("Total\t\t\t\t\t\t\t\t\t", sum(D['Freq. Abs. (n=4)']),"\t       ",sum(D['Freq. % (n=4)']))
